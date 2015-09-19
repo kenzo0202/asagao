@@ -12,6 +12,12 @@ class MembersController < ApplicationController
         @member= Member.find(params[:id])
     end
     def create
+        @member= Member.new(params[:member])
+        if @member.save
+            redirect_to @save, notice: "会員登録しました"
+        else
+            render "new"
+        end
     end
     def update
     end
