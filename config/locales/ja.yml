@@ -13,6 +13,12 @@ ja:
         birthday: 誕生日
         email: メールアドレス
         administrator: 管理者
+      article:
+        title: タイトル
+        body: 本文
+        released_at: 掲載開始時
+        expired_at: 掲載終了時
+        member_only: 管理者限定
       errors:
         messages:
           invalid_member_name: は半角で入力してください

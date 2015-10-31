@@ -14,7 +14,7 @@ class Article < ActiveRecord::Base
     
     def no_expiration= (val)
         @no_expiration = val.in?([true, 1, "1"])
-    end 
+    end  
     
     private 
     def check_expired_at
