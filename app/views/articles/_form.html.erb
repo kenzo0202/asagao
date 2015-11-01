@@ -1,5 +1,5 @@
 <%= render "shared/errors", obj: @article %>
-<table class="attr">
+   <table class="attr">
     <tr>
         <th><%=form.label :title%></th>
         <td><%=form.text_field :title, size: 20%></td>
@@ -10,17 +10,18 @@
     </tr>
     <tr>
         <th><%=form.label :released_at, for: "article_released_at_li"%></th>
-        <td><%=form.datetime_select :released_at,start_year: 2000,end_year: Time.now.year +1,use_month_numbers: true%></td>
+        <td><%=form.datetime_select :released_at,
+start_year: 2000, end_year: Time.now.year + 1, use_month_numbers: true%></td>
     </tr>
     <tr>
-        <th><%= Member.human_attribute_name(:gender) %></th>
+        <th><%=form.label :expired_at, for: "article_expired_at_li"%></th>
         <td>
-        <%=form.radio_button :gender, 0%>
-        <%=form.label :gender_0%>
-        <%=form.radio_button :gender, 1%>
-        <%=form.label :gender_1%>       
+        <%= form.check_box :no_expiration %>
+        <%= form.label :no_expiration %>
+        <%=form.datetime_select :expired_at, start_year: 2000, end_year: Time.now.year + 1, use_month_numbers: true%>
         </td>
     </tr>
+    
     <tr>
         <th><%=Article.human_attribute_name(:member_only) %></th>
         <td>

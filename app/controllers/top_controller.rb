@@ -1,6 +1,6 @@
 class TopController < ApplicationController
     def index
-      @message="おはようございます"
+      @articles = Article.order(released_at: :desc).limit(5)
     end
     def about
     end
