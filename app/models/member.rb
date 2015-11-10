@@ -15,6 +15,18 @@ class Member < ActiveRecord::Base
     
     validate :check_email
     
+    validates :password , presence: {on: :create}, confirmation: {allow_blank: true}
+    
+    attr_accessor :password, :password_confirmation
+    
+    def password=(val)
+        if val.present?
+            self.hashed_password = BCrypt::Password.create(val)
+        end
+        @password = val
+    end
+    
+    
     private 
     def check_email
         if email.present?
@@ -28,6 +40,15 @@ class Member < ActiveRecord::Base
                 rel = rel.where("name LIKE ? OR full_name LIKE ?","%#{query}%","%#{query}%")
             end
             rel
+        end
+        
+        def authenticate(name, password)
+            member = find_by(name: name)
+            if member && member.hashed_password.present? && BCrypt::Password.new(member.hashed_password) == password
+                member
+            else
+                nil
+            end
         end
     end
 end
