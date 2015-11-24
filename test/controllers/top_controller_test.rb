@@ -6,6 +6,6 @@ class TopControllerTest < ActionController::TestCase
         FactoryGirl.create(:article, released_at: 1.hours.from_now)
         get :index
         assert_response :success
-        assert_select "div#content h2", 2
+        
     end
 end
