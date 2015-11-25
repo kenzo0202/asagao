@@ -2,7 +2,7 @@
 
 <% if current_member %>
 <p class="member">
-    <%= current_member.name %>さん｜
+    <%= link_to current_member.name + "さん", :account %>さん｜
     <%= link_to "ログアウト", :session, method: :delete, data: {confrim: "ログアウトしますか？"} %>
 </p>
 <% end %>

@@ -29,6 +29,7 @@
         <th><%= form.label :email%></th>
         <td><%= form.text_field :email %></td>
     </tr>
+    <% if controller.kind_of?(MembersController) %>
     <tr>
         <th><%= Member.human_attribute_name(:administrator) %></th>
         <td>
@@ -36,7 +37,7 @@
         <%= form.label :administrator%>
         </td>
     </tr>
-    
+    <% end %>
     <tr>
         <th><%= form.label :password %></th>
         <td><%= form.password_field :password %></td>
